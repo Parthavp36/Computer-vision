@@ -1,0 +1,13 @@
+import cv2
+import numpy as np
+img=cv2.imread('sss.jpg',0)
+row ,col=img.shape
+pt1=np.float32([[0, 260], [640, 260],
+                    [0, 400], [640, 400]])
+pt2=np.float32([[0, 0], [400, 0],
+                [0, 640], [400, 640]])
+m=cv2.getPerspectiveTransform(pt1,pt2)
+pers=cv2.warpPerspective(img,m,(col,row))
+cv2.imshow('perspective',pers)
+cv2.waitKey(0)
+cv2.destroyAllWindows()

@@ -1,0 +1,12 @@
+import cv2
+import numpy as np
+img=cv2.imread('sss.jpg',0)
+row ,col=img.shape
+mat1=np.float32([[50,50],[200,50],[100,200]])
+mat2=np.float32([[50,100],[200,150],[50,50]])
+m=cv2.getAffineTransform(mat1,mat2)
+trans=cv2.warpAffine(img,m,(col,row))
+cv2.imshow('orignial',img)
+cv2.imshow('trans',trans)
+cv2.waitKey(0)
+cv2.destroyAllWindows()

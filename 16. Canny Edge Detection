@@ -1,0 +1,8 @@
+import cv2
+img=cv2.imread('sss.jpg')
+l=100
+u=150
+can=cv2.Canny(img,l,u)
+cv2.imshow('edge',can)
+cv2.waitKey(0)
+cv2.destroyAllWindows()

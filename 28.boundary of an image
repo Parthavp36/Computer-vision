@@ -1,0 +1,15 @@
+import cv2
+import numpy as np
+img=cv2.imread('sss.jpg')
+p1=np.array([[-1,0,1],[-2,0,2],[-1,0,1]])
+p2=np.array([[1,2,1],[0,0,0],[-1,-2,-1]])
+conx=cv2.filter2D(img,-1,p1)
+cony=cv2.filter2D(img,-1,p2)
+magnitude=np.sqrt(conx**2 + cony**2)
+mag=np.uint8(magnitude)
+thres=10
+edges = cv2.threshold(mag, thres, 255, cv2.THRESH_BINARY)[1]
+
+cv2.imshow('out',edges)
+cv2.waitKey(0)
+cv2.destroyAllWindows()

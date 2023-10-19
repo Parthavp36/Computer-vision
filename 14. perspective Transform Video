@@ -1,0 +1,17 @@
+import cv2
+import numpy as np
+cap=cv2.VideoCapture('sample.mp4')
+while True :
+    rel,frame=cap.read()
+    p1=np.float32([[0, 260], [640, 260], 
+                    [0, 400], [640, 400]])
+    p2=np.float32([[0, 0], [400, 0],
+                    [0, 640], [400, 640]])
+    m=cv2.getPerspectiveTransform(p1,p2)
+    pers=cv2.warpPerspective(frame,m,(500,600))
+    cv2.imshow('pers',pers)
+    k=cv2.waitKey(24)
+    if k==ord('q'):
+        break
+cap.release()
+cv2.destroyAllWindows()
